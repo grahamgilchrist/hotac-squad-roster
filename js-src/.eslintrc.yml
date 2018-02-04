@@ -1,0 +1,6 @@
+---
+  root: true
+  extends: "../node/eslint-config/browser.yaml"
+  env:
+    browser: true
+    commonjs: true

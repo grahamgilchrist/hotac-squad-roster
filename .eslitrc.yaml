@@ -1,0 +1,3 @@
+---
+  root: true
+  extends: "./node/eslint-config/node.yaml"

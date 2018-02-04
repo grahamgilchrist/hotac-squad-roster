@@ -1,0 +1,10 @@
+# ignore package install folders
+node_modules
+app/components
+
+# ignore generated files
+app/styles
+app/js/*
+!app/js/vendor
+js-src/generated
+.gulp-cache/
