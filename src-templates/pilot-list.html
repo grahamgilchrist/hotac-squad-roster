@@ -1,0 +1,13 @@
+<div class="pilot-list">
+    <ul>
+        <% pilots.forEach(function(pilot) { %>
+            <li class="pilot-list-item">
+                <%= pilot.name %><br/>
+                Pilot skill: <%= pilot.skill %><br/>
+                <img src=""/><br/>
+                <a href="https://hotac-ship-builder.netlify.com/#/<%= pilot.link %>" target="_blank">Link to build</a><br>
+                Missions:<br>
+            </li>
+        <% }); %>
+    </ul>
+</div>

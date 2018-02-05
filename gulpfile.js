@@ -9,7 +9,7 @@ require('./node/sass')();
 require('./node/eslint')();
 require('./node/json-lint')();
 require('./node/yaml-lint')();
-// require('./node/templates')();
+require('./node/templates')();
 require('./node/uglify')();
 
 // Add some general task aliases
@@ -22,7 +22,7 @@ gulp.task('lint', [
 
 gulp.task('watch', [
     'sass:watch',
-    // 'templates:watch',
+    'templates:watch',
     'browserify:watch',
     'uglify:watch'
 ]);
@@ -38,7 +38,7 @@ gulp.task('JsCompileAndCompress', function (done) {
 });
 
 gulp.task('build', [
-    // 'templates:compile',
+    'templates:compile',
     'JsCompileAndCompress',
     'sass'
 ]);
