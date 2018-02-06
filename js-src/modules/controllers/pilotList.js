@@ -5,9 +5,12 @@ var $ = require('jquery');
 module.exports = {
     ready: function () {
         var $wrapperElement = $('[view-bind=pilot-list]');
-        var context = {
-            pilots: pilots
-        };
-        templateUtils.renderToDom('pilot-list', $wrapperElement, context);
+
+        pilots.then(function (pilotsList) {
+            var context = {
+                pilots: pilotsList
+            };
+            templateUtils.renderToDom('pilot-list', $wrapperElement, context);
+        });
     }
 }
