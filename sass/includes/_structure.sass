@@ -33,19 +33,34 @@
 .pilot-list-item
     background-color: #fff
     padding: $site-padding
+    display: flex
 
     + .pilot-list-item
         margin-top: $site-padding
 
 .pilot-image
     width: 300px
+    margin-right: $site-padding
 
     .image-wrapper
         overflow: hidden
         // padding bottom trick to maintain aspect ratio as image scales
         height: 0
         padding-bottom: 41%
+        border-radius: 12px
 
         img
             display: block
             max-width: 100%
+
+.pilot-data
+    line-height: 1
+    flex-grow: 1
+
+    .title
+        display: flex
+        justify-content: space-between
+
+    .skill
+        white-space: nowrap
+        margin-left: $site-padding / 2
