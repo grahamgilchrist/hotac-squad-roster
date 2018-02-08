@@ -5,16 +5,33 @@ var $ = require('jquery');
 var urlHashController = require('../controllers/urlHash');
 var Build = require('../models/shipBuild');
 
-var Squadron = function (json) {
-    this.hasLoaded = this.parseJson(json);
+// eslint-disable-next-line new-cap
+var codec = window.JsonUrl('lzma');
+
+var Squadron = function (startingData) {
+    this.setDefaults();
+    if (typeof startingData === 'string') {
+        this.hasLoaded = this.parseCompressedString(startingData);
+    } else if (startingData) {
+        this.hasLoaded = this.parseJson(startingData);
+    } else {
+        // TODO: set immediatelhy resolved promise for this.hasloaded
+        this.hasLoaded = true;
+    }
 };
+
+Squadron.prototype.setDefaults = function () {
+    this.name = '';
+    this.missionsFlown = [];
+    this.pilots = [];
+}
 
 Squadron.prototype.parseJson = function (json) {
     var self = this;
 
     this.name = json.name;
 
-    this.missionsFlown = this.parseMissonJson(json);
+    this.missionsFlown = this.parseMissionJson(json);
     var parsedPilotsPromise = this.parsePilotJson(json, this.missionsFlown);
 
     var loadCompletePromise = parsedPilotsPromise.then(function (pilotObjects) {
@@ -79,7 +96,7 @@ Squadron.prototype.getPilotMissions = function (missionPilots) {
     return pilotMissions;
 };
 
-Squadron.prototype.parseMissonJson = function (json) {
+Squadron.prototype.parseMissionJson = function (json) {
     // Convert mission json into JS "class" object
     var missionsFlown = [];
     json.missions.forEach(function (missionJson) {
@@ -113,7 +130,46 @@ Squadron.prototype.parsePilotJson = function (json) {
 };
 
 Squadron.prototype.toJson = function () {
-    return {};
+    var json = {
+        name: this.name,
+        missions: [],
+        pilots: [],
+        missionPilots: {}
+    };
+
+    this.pilots.forEach(function (pilot) {
+        json.pilots.push({
+            link: pilot.link
+        });
+    });
+
+    this.missionsFlown.forEach(function (missionFlown, missionIndex) {
+        json.missions.push({
+            missionId: missionFlown.mission.id,
+            date: missionFlown.date.getTime()
+        });
+
+        json.missionPilots[missionIndex] = [];
+        missionFlown.pilots.forEach(function (pilot, pilotIndex) {
+            json.missionPilots[missionIndex].push(pilotIndex);
+        })
+    });
+
+    return JSON.stringify(json);
+};
+
+Squadron.prototype.toCompressedString = function () {
+    var jsonString = this.toJson();
+    return codec.compress(jsonString);
+};
+
+Squadron.prototype.parseCompressedString = function (compressedString) {
+    var self = this;
+    var decodePromise = codec.decompress(compressedString).then(function(jsonString) {
+        var json = JSON.parse(jsonString);
+        return self.parseJson(json);
+    });
+    return decodePromise;
 };
 
 module.exports = Squadron;

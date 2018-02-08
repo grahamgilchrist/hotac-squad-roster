@@ -1,0 +1,123 @@
+{
+  "name": "Spectre Squadron",
+  "missions": [
+    {
+      "missionId": 16,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 15,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 7,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 6,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 5,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 14,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 13,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 12,
+      "date": 1517151600000
+    },
+    {
+      "missionId": 1,
+      "date": 1517151600000
+    }
+  ],
+  "pilots": [
+    {
+      "link": "\/v4\/XQAAAAIUAgAAAAAAAABLKYTnIyIE1-b3y-J5Olq0P3SxzXwycWPY0FHad7AhJXXbmqIqQHHWRXH4pZYRfkkDYtb3xJt3S3PeCDXVBzGavbQ27srj9sZ7a9QF19fF-fhiZmGRwPLXUmmYaL_c4Fcc-ZhLqss9As7qDqGXEFE0E4HV8Stevp0yAHUsTeQDySVzcy9codE0TMGx-7CIC5lz3n4sXN1SYCWzfg8aSJXuKCIWKNI_O5rYT6a7FRYKEcqZeb8YBaV___5VLpg"
+    },
+    {
+      "link": "\/v4\/XQAAAAJ4AQAAAAAAAABLKQSGE880XxatsNVOu1RQgTFsIPKqyRhk6_usC9ZpJw-tO5sDMZL90T2DeaH4h865-wDVA6pMO6GdpXulxOqeLeMzjCKSX4BDge8yCXp8fNCDdYurGIqRsBZ4vRvghAlyHkDIL33tr_uBZv09ipvqX1ouzdPBbw_hicSWGYWQ2q1lNiYFM96dGf_9iraA"
+    },
+    {
+      "link": "\/v4\/XQAAAAL0AQAAAAAAAABLKMSmTHLlO_0vQxHck-HBsE9vcbRTTWac34Ef6LDNSnFuQhd2bNjJTEpuBXtgse9SEU54RCEVxzd2TC-OY0pJdcPmdWZZe0VsgT3M2r2L3I3iDaBq2pgtlxgp4j8JHwzb4Uur-xVpTknhfegG547zIyOvi94YAPqmEe753-s0E2xT2VUV7gFv45eciaIpaT4TwfiO9R_ggIbusqQf3P_8dlAA"
+    },
+    {
+      "link": "\/v4\/XQAAAAK5AQAAAAAAAABLKQQmw0NO8j3qqKtdQPulz0WIZvsjObn2DBjk5xrCc3bYEqyY6dNw0o0DOXVcvg9geQeD4h6VUbyTybo4BNUWQ0qHl_-n-Y2ztv-ma0q0crQz_iiVzD5r9Nd9ZLEEbbB0ped1Dhcn7321BDipdo87xkJ9K8Frt6LjHj7H6GMPaIH4vv9crwgwJAhTMj7Xz5edzoLSt7BdbSUi3GWfz4-kof_64sD_"
+    },
+    {
+      "link": "\/v4\/XQAAAAK5AQAAAAAAAABLKQQmw0NO8j3qqKtdQPulz0WIZvsjObn2DBjk5xrCc3bYEqyY6dNw0o0DOXVcvg9geQeD4h6VUbyTybo4BNUWQ0qHl_-n-Y2ztv-ma0q0crQz_iiVzD5r9Nd9ZLEEbbB0ped1Dhcn7321BDipdo87xkJ9K8Frt6LjHj7H6GMPaIH4vv9crwgwJAhTMj7Xz5edzoLSt7BdbSUi3GWfz4-kof_64sD_"
+    }
+  ],
+  "missionPilots": {
+    "0": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "1": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "2": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "3": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "4": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "5": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "6": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "7": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "8": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}
