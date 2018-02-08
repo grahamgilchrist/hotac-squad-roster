@@ -1,0 +1,14 @@
+<ul>
+    <% missionsFlown.forEach(function(missionFlown) { %>
+        <li>
+            <h3><%= missionFlown.mission.name %></h3>
+            <p>on: <%= missionFlown.date.toUTCString() %></p>
+            <h5>Pilots:</h5>
+            <ul>
+                <% missionFlown.pilots.forEach(function(pilot) { %>
+                    <li><%= pilot.build.callsign %></li>
+                <% }); %>
+            </ul>
+        </li>
+    <% }); %>
+</ul>

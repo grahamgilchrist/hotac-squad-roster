@@ -1,16 +1,15 @@
-var pilots = require('../data/pilots');
 var templateUtils = require('../utils/templates');
+var missions = require('../models/missions');
 var $ = require('jquery');
 
 module.exports = {
-    ready: function () {
+    ready: function (pilotsList) {
         var $wrapperElement = $('[view-bind=pilot-list]');
 
-        pilots.then(function (pilotsList) {
-            var context = {
-                pilots: pilotsList
-            };
-            templateUtils.renderToDom('pilot-list', $wrapperElement, context);
-        });
+        var context = {
+            pilots: pilotsList,
+            missions: missions
+        };
+        templateUtils.renderToDom('pilot-list', $wrapperElement, context);
     }
 }

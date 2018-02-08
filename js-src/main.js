@@ -1,10 +1,10 @@
 'use strict';
 
 var $ = window.jQuery = require('jquery');
-var pilotListController = require('./modules/controllers/pilotList');
+var pageController =  require('./modules/controllers/page');
 
 var ready = function () {
-    pilotListController.ready();
+    pageController.init();
 };
 
 $(document).ready(ready);

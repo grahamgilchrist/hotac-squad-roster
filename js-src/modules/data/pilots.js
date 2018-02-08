@@ -1,6 +1,3 @@
-var urlHashController = require('../controllers/urlHash');
-var Build = require('../models/shipBuild');
-
 var pilotData = [
     {
         // Spectrum (Spectre 1)
@@ -17,25 +14,11 @@ var pilotData = [
     {
         // Slipslide (Spectre 4)
         link: '/v4/XQAAAAK5AQAAAAAAAABLKQQmw0NO8j3qqKtdQPulz0WIZvsjObn2DBjk5xrCc3bYEqyY6dNw0o0DOXVcvg9geQeD4h6VUbyTybo4BNUWQ0qHl_-n-Y2ztv-ma0q0crQz_iiVzD5r9Nd9ZLEEbbB0ped1Dhcn7321BDipdo87xkJ9K8Frt6LjHj7H6GMPaIH4vv9crwgwJAhTMj7Xz5edzoLSt7BdbSUi3GWfz4-kof_64sD_'
+    },
+    {
+        // Dustoff (Spectre 5)
+        link: '/v4/XQAAAAK5AQAAAAAAAABLKQQmw0NO8j3qqKtdQPulz0WIZvsjObn2DBjk5xrCc3bYEqyY6dNw0o0DOXVcvg9geQeD4h6VUbyTybo4BNUWQ0qHl_-n-Y2ztv-ma0q0crQz_iiVzD5r9Nd9ZLEEbbB0ped1Dhcn7321BDipdo87xkJ9K8Frt6LjHj7H6GMPaIH4vv9crwgwJAhTMj7Xz5edzoLSt7BdbSUi3GWfz4-kof_64sD_'
     }
-    // Todo:
-    // Dustoff
 ];
 
-var promises = [];
-
-pilotData.forEach(function (item) {
-    var promise = urlHashController.parseExportStringToHistory(item.link);
-    promises.push(promise);
-    promise.then(function (decodedPilot) {
-        var build = new Build(decodedPilot.xpHistory, decodedPilot.callsign, decodedPilot.playerName, decodedPilot.enemies, decodedPilot.equippedUpgrades, decodedPilot.equippedAbilities);
-        item.build = build;
-        item.imgUrl = '/components/xwing-data/images/' + build.currentShip.pilotCard.image;
-    });
-});
-
-var allPromises = Promise.all(promises).then(function () {
-    return pilotData;
-});
-
-module.exports = allPromises;
+module.exports = pilotData;

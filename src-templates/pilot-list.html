@@ -14,6 +14,14 @@
                     </div>
                     <h4><%= pilot.build.playerName %></h4>
                     <p><a href="https://hotac-ship-builder.netlify.com/#/<%= pilot.link %>" target="_blank">Link to build</a></p>
+                    <h5>Missions flown:</h5>
+                    <ul>
+                        <% pilot.build.xpHistory.forEach(function(xpItem) { %>
+                            <% if (xpItem.data.missionId) { %>
+                                <li><%= missions.getById(xpItem.data.missionId).name %></li>
+                            <% }; %>
+                        <% }); %>
+                    </ul>
                 </h4>
             </li>
         <% }); %>
