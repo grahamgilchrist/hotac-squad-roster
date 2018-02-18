@@ -26,6 +26,15 @@
         margin: 0
         line-height: 1
 
+.new-roster
+    cursor: pointer
+
+.new-content,
+.main-content,
+.not-found
+    &.inactive
+        display: none
+
 .main-content
     background-color: $color-background-grey
     padding: 0 $site-padding $site-padding
@@ -64,3 +73,10 @@
     .skill
         white-space: nowrap
         margin-left: $site-padding / 2
+
+.mission-list-item
+    background-color: #fff
+    padding: $site-padding
+
+    + .mission-list-item
+        margin-top: $site-padding

@@ -42,46 +42,51 @@
         <div class="header">
             <div class="structure">
                 <h1>Hotac Squad Roster</h1>
-        	   <a href="">Create new roster</a>
+                <a class="new-roster">Create new roster</a>
             </div>
         </div>
 
         <div class="main">
             <div class="structure">
                 <div class="main-header">
-                    <h2>Squad name: Spectre squadron</h2>
+                    <h2>Squad name: <span view-bind="squadron-name"></span></h2>
                 </div>
 
-                <div class="main-content">
+                <div class="new-content">
+                    <div class="not-found inactive">
+                        <h2>Requested roster not found</h2>
+                    </div>
+
+                    <h2>Create new roster</h2>
+                    <p>
+                        <label fpor="">Squadron name:</label>
+                        <input type="text" id="squadron-name" name="squadron-name">
+                        <button id="start">Start</button>
+                    </p>
+                </div>
+
+                <div class="main-content inactive">
                     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                         <div class="mdl-tabs__tab-bar">
                             <a href="#pilots-tab" class="mdl-tabs__tab is-active"><span>Pilots</span></a>
                             <a href="#missions-tab" class="mdl-tabs__tab">Missions</a>
                         </div>
 
+                        <h2>Campaign VPs: Rebel: <span id="rebel-vps">0</span>, Imperial: <span id="imperial-vps">0</span></h2>
+
                         <div class="mdl-tabs__panel is-active" id="pilots-tab">
                             <h3>Pilots</h3>
                             <div view-bind="pilot-list"></div>
+
+                            <h4>Add new pilot</h4>
+                            <label for="new-pilot-url">URl:</label>
+                            <input type="text" id="new-pilot-url" name="new-pilot-url">
+                            <button id="add-pilot">Add pilot</button>
                         </div>
 
                         <div class="mdl-tabs__panel" id="missions-tab">
                             <h3>Missions</h3>
                             <div view-bind="mission-list"></div>
-
-                            <h2>all</h2>
-                            <ul>
-                                <li>Defection II: Defector<br>
-                                    Pilots: Spectrum
-                                </li>
-                                <li>Defection I: Secure holonet receiver</li>
-                                <li>Minefields III: Care package</li>
-                                <li>Minefields II: Imperial entanglement</li>
-                                <li>Minefields I: Tread Softly</li>
-                                <li>Capture officer III: Capture officer</li>
-                                <li>Capture officer II: Nobody home</li>
-                                <li>Capture officer I: Miners' strike</li>
-                                <li>Introductory mission: Local trouble</li>
-                            </ul>
                         </div>
 
                     </div>

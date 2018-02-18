@@ -2,7 +2,6 @@
 
 // eslint-disable-next-line new-cap
 var codec = window.JsonUrl('lzma');
-// var codec = require('json-url')('lzw');
 
 var _map = require('lodash/map');
 var $ = require('jquery');

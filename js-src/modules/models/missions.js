@@ -26,7 +26,11 @@ var missions = [
         id: 4,
         name: 'Capture Refueling Station',
         groupName: 'The Refueling Station',
-        groupPart: 3
+        groupPart: 3,
+        vps: {
+            rebel: 1,
+            imperial: 1
+        }
     },
     {
         id: 5,
@@ -39,13 +43,20 @@ var missions = [
         id: 6,
         name: 'Imperial Entanglement',
         groupName: 'Minefields',
-        groupPart: 2
+        groupPart: 2,
+        vps: {
+            imperial: 1
+        }
     },
     {
         id: 7,
         name: 'Care Package',
         groupName: 'Minefields',
-        groupPart: 3
+        groupPart: 3,
+        vps: {
+            rebel: 1,
+            imperial: 1
+        }
     },
     {
         id: 8,
@@ -58,19 +69,29 @@ var missions = [
         id: 9,
         name: 'Bait',
         groupName: 'Chasing Phantoms',
-        groupPart: 2
+        groupPart: 2,
+        vps: {
+            imperial: 1
+        }
     },
     {
         id: 10,
         name: 'Cloak and Dagger',
         groupName: 'Chasing Phantoms',
-        groupPart: 3
+        groupPart: 3,
+        vps: {
+            rebel: 1,
+            imperial: 1
+        }
     },
     {
         id: 11,
         name: 'Revenge',
         groupName: 'Chasing Phantoms',
-        groupPart: 4
+        groupPart: 4,
+        vps: {
+            rebel: 1
+        }
     },
     {
         id: 12,
@@ -83,13 +104,20 @@ var missions = [
         id: 13,
         name: 'Nobody Home',
         groupName: 'Capture Officer',
-        groupPart: 2
+        groupPart: 2,
+        vps: {
+            imperial: 1
+        }
     },
     {
         id: 14,
         name: "Miners' Strike",
         groupName: 'Capture Officer',
-        groupPart: 3
+        groupPart: 3,
+        vps: {
+            rebel: 1,
+            imperial: 1
+        }
     },
     {
         id: 15,
@@ -102,13 +130,20 @@ var missions = [
         id: 16,
         name: 'Defector',
         groupName: 'Defection',
-        groupPart: 2
+        groupPart: 2,
+        vps: {
+            imperial: 1
+        }
     },
     {
         id: 17,
         name: 'Pride of the Empire',
         groupName: 'Defection',
-        groupPart: 3
+        groupPart: 3,
+        vps: {
+            rebel: 1,
+            imperial: 1
+        }
     }
 ];
 

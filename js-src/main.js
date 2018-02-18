@@ -4,7 +4,7 @@ var $ = window.jQuery = require('jquery');
 var pageController =  require('./modules/controllers/page');
 
 var ready = function () {
-    pageController.init();
+    pageController.ready();
 };
 
 $(document).ready(ready);

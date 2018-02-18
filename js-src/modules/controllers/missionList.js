@@ -1,8 +1,8 @@
+'use strict';
+
 // var pilots = require('../data/pilots');
 var templateUtils = require('../utils/templates');
 // var missions = require('../models/missions');
-var MissionFlown = require('../models/missionsFlown');
-var missionData = require('../data/missionsFlown');
 var $ = require('jquery');
 
 module.exports = {
@@ -14,4 +14,4 @@ module.exports = {
         };
         templateUtils.renderToDom('mission-list', $wrapperElement, context);
     }
-}
+};

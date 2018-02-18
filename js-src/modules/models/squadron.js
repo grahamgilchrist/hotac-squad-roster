@@ -1,30 +1,30 @@
 'use strict';
 var MissionFlown = require('../models/missionsFlown');
-var missionData = require('../data/missionsFlown');
-var $ = require('jquery');
 var urlHashController = require('../controllers/urlHash');
 var Build = require('../models/shipBuild');
-
-// eslint-disable-next-line new-cap
-var codec = window.JsonUrl('lzma');
+var events = require('../controllers/events');
 
 var Squadron = function (startingData) {
     this.setDefaults();
-    if (typeof startingData === 'string') {
-        this.hasLoaded = this.parseCompressedString(startingData);
-    } else if (startingData) {
-        this.hasLoaded = this.parseJson(startingData);
+
+    var loadedPromise;
+    if (startingData) {
+        loadedPromise = this.parseJson(startingData);
     } else {
-        // TODO: set immediatelhy resolved promise for this.hasloaded
-        this.hasLoaded = true;
+        loadedPromise = Promise.resolve(this);
     }
+
+    this.hasLoaded = loadedPromise.then(function (squadron) {
+        events.trigger('model.squadron.ready', squadron);
+        return squadron;
+    });
 };
 
 Squadron.prototype.setDefaults = function () {
     this.name = '';
     this.missionsFlown = [];
     this.pilots = [];
-}
+};
 
 Squadron.prototype.parseJson = function (json) {
     var self = this;
@@ -32,7 +32,7 @@ Squadron.prototype.parseJson = function (json) {
     this.name = json.name;
 
     this.missionsFlown = this.parseMissionJson(json);
-    var parsedPilotsPromise = this.parsePilotJson(json, this.missionsFlown);
+    var parsedPilotsPromise = this.parsePilotsJson(json, this.missionsFlown);
 
     var loadCompletePromise = parsedPilotsPromise.then(function (pilotObjects) {
         // now assign all processed pilots to list
@@ -40,12 +40,14 @@ Squadron.prototype.parseJson = function (json) {
 
         self.assignMissionPilots(json.missionPilots);
         self.assignPilotMissions(json.missionPilots);
+
+        return self;
     });
 
     return loadCompletePromise;
 };
 
-Squadron.prototype.assignMissionPilots = function (missionPilots, pilotObjects) {
+Squadron.prototype.assignMissionPilots = function (missionPilots) {
     var self = this;
 
     // assign pilots to missions as well
@@ -92,41 +94,51 @@ Squadron.prototype.getPilotMissions = function (missionPilots) {
             }
             pilotMissions[pilotIndex].push(missionIndex);
         });
-    };
+    }
     return pilotMissions;
 };
 
 Squadron.prototype.parseMissionJson = function (json) {
     // Convert mission json into JS "class" object
     var missionsFlown = [];
-    json.missions.forEach(function (missionJson) {
-        var missionFlown = new MissionFlown(missionJson);
-        missionsFlown.push(missionFlown);
-    });
+    if (json.missions) {
+        json.missions.forEach(function (missionJson) {
+            var missionFlown = new MissionFlown(missionJson);
+            missionsFlown.push(missionFlown);
+        });
+    }
     return missionsFlown;
 };
 
-Squadron.prototype.parsePilotJson = function (json) {
+Squadron.prototype.parsePilotsJson = function (json) {
+    var self = this;
     // Convert pilot json into objects
     var pilotLoadPromises = [];
-    json.pilots.forEach(function (pilotJson) {
-        var decodePromise = urlHashController.parseExportStringToHistory(pilotJson.link);
-
-        var pilotObject = {
-            link: pilotJson.link,
-        };
-
-        var pilotObjectPromise = decodePromise.then(function (decodedPilot) {
-            var build = new Build(decodedPilot.xpHistory, decodedPilot.callsign, decodedPilot.playerName, decodedPilot.enemies, decodedPilot.equippedUpgrades, decodedPilot.equippedAbilities);
-            pilotObject.build = build;
-            pilotObject.imgUrl = '/components/xwing-data/images/' + build.currentShip.pilotCard.image;
-            return pilotObject;
+    if (json.pilots) {
+        json.pilots.forEach(function (pilotJson) {
+            var pilotObjectPromise = self.parsePilotJson(pilotJson);
+            pilotLoadPromises.push(pilotObjectPromise);
         });
-
-        pilotLoadPromises.push(pilotObjectPromise);
-    });
+    }
 
     return Promise.all(pilotLoadPromises);
+};
+
+Squadron.prototype.parsePilotJson = function (pilotJson) {
+    var decodePromise = urlHashController.parseExportStringToHistory(pilotJson.link);
+
+    var pilotObject = {
+        link: pilotJson.link
+    };
+
+    var pilotObjectPromise = decodePromise.then(function (decodedPilot) {
+        var build = new Build(decodedPilot.xpHistory, decodedPilot.callsign, decodedPilot.playerName, decodedPilot.enemies, decodedPilot.equippedUpgrades, decodedPilot.equippedAbilities);
+        pilotObject.build = build;
+        pilotObject.imgUrl = '/components/xwing-data/images/' + build.currentShip.pilotCard.image;
+        return pilotObject;
+    });
+
+    return pilotObjectPromise;
 };
 
 Squadron.prototype.toJson = function () {
@@ -152,24 +164,34 @@ Squadron.prototype.toJson = function () {
         json.missionPilots[missionIndex] = [];
         missionFlown.pilots.forEach(function (pilot, pilotIndex) {
             json.missionPilots[missionIndex].push(pilotIndex);
-        })
+        });
     });
 
     return JSON.stringify(json);
 };
 
-Squadron.prototype.toCompressedString = function () {
-    var jsonString = this.toJson();
-    return codec.compress(jsonString);
+Squadron.prototype.addPilot = function (url) {
+    var self = this;
+    var pilotJson = {
+        link: url
+    };
+    var pilotObjectPromise = this.parsePilotJson(pilotJson);
+    pilotObjectPromise.then(function (pilotObject) {
+        self.pilots.push(pilotObject);
+        events.trigger('model.squadron.pilots.add', self);
+    });
 };
 
-Squadron.prototype.parseCompressedString = function (compressedString) {
-    var self = this;
-    var decodePromise = codec.decompress(compressedString).then(function(jsonString) {
-        var json = JSON.parse(jsonString);
-        return self.parseJson(json);
+Squadron.prototype.getVpTotals = function () {
+    var totals = {
+        rebel: 0,
+        imperial: 0
+    };
+    this.missionsFlown.forEach(function (missionFlown) {
+        totals.rebel += missionFlown.vps.rebel;
+        totals.imperial += missionFlown.vps.imperial;
     });
-    return decodePromise;
+    return totals;
 };
 
 module.exports = Squadron;
