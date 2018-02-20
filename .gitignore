@@ -6,5 +6,6 @@ app/components
 app/styles
 app/js/*
 !app/js/vendor
-js-src/generated
+# Add this back when we generate automatically
+#js-src/generated
 .gulp-cache/
