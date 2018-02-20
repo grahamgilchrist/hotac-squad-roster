@@ -1,6 +1,6 @@
 <div class="pilot-list">
     <ul>
-        <% pilotObjects.forEach(function(pilotObject) { %>
+        <% pilotObjects.forEach(function(pilotObject, pilotIndex) { %>
             <li class="pilot-list-item">
                 <div class="pilot-image">
                     <div class="image-wrapper">
@@ -15,24 +15,31 @@
                     <h4><%= pilotObject.pilot.build.playerName %></h4>
                     <p><a href="https://hotac-ship-builder.netlify.com/#/<%= pilotObject.pilot.link %>" target="_blank">Link to build</a></p>
 
-                    <h5>Enemies Destroyed: <%= pilotObject.enemiesDestroyed %></h5>
-                    <ul>
+                    <h5 click-toggle="enemies-<%= pilotIndex %>">Enemies Destroyed: <%= pilotObject.enemiesDestroyed %></h5>
+                    <ul toggle-target="enemies-<%= pilotIndex %>">
                         <% for (var xwsKey in pilotObject.pilot.build.enemyDefeats.enemyDefeats) { %>
                             <li><%= xwsKey %>: <%= pilotObject.pilot.build.enemyDefeats.enemyDefeats[xwsKey] %></li>
                         <% } %>
                     </ul>
 
-                    <h5>Total XP earned:</h5>
+                    <h5>Total XP earned: <%= pilotObject.xpTotal %></h5>
 
-                    <h5>Missions flown:</h5>
-                    <h5>Success:</h5>
-                    <h5>Fail:</h5>
-                    <h5>Ejects:</h5>
-                    <ul>
-                        <% pilotObject.pilot.build.xpHistory.forEach(function(xpItem) { %>
-                            <% if (xpItem.data.missionId) { %>
-                                <li><%= missions.getById(xpItem.data.missionId).name %></li>
-                            <% }; %>
+
+                    <h5 click-toggle="squadron-missions-<%= pilotIndex %>">Squadron Missions: (<%= pilotObject.missionCounts.total %>)</h5>
+                    <div toggle-target="squadron-missions-<%= pilotIndex %>">
+                        <h6>Success: <%= pilotObject.missionCounts.success %></h6>
+                        <h6>Fail: <%= pilotObject.missionCounts.fail %></h6>
+                        <ul>
+                            <% pilotObject.pilot.missions.forEach(function(missionFlown) { %>
+                                <li><%= missionFlown.mission.name %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+
+                    <h5 click-toggle="pilot-missions-<%= pilotIndex %>">Pilot Missions: (<%= pilotObject.missionCounts.pilotMissions %>)</h5>
+                    <ul toggle-target="pilot-missions-<%= pilotIndex %>">
+                        <% pilotObject.pilotMissions.forEach(function(mission) { %>
+                            <li><%= mission.name %></li>
                         <% }); %>
                     </ul>
                 </h4>

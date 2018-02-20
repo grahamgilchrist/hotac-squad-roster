@@ -3,45 +3,54 @@
   "missions": [
     {
       "missionId": 16,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 15,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 7,
       "date": 1517151600000,
       "vps": {
         "rebel": 1
-      }
+      },
+      "success": true
     },
     {
       "missionId": 6,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 5,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 14,
       "date": 1517151600000,
       "vps": {
         "rebel": 1
-      }
+      },
+      "success": true
     },
     {
       "missionId": 13,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 12,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     },
     {
       "missionId": 1,
-      "date": 1517151600000
+      "date": 1517151600000,
+      "success": true
     }
   ],
   "pilots": [

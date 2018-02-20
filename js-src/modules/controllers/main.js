@@ -9,6 +9,12 @@ module.exports = {
     ready: function () {
         $mainContent = $('.main-content');
         $('#add-pilot').on('click', module.exports.addPilot);
+
+        $(document).on('click', '[click-toggle]', function () {
+            var toggleTargetId = $(this).attr('click-toggle');
+            var $toggleTarget = $('[toggle-target=' + toggleTargetId + ']');
+            $toggleTarget.toggleClass('active');
+        });
     },
     show: function () {
         $mainContent.removeClass('inactive');
