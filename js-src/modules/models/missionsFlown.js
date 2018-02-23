@@ -2,7 +2,7 @@
 
 var missionData = require('./missions');
 var DateTimeLib = require('luxon');
-var DateTime = DateTimeLib.DateTime
+var DateTime = DateTimeLib.DateTime;
 
 var Mission = function (jsonData) {
     this.mission = missionData.getById(jsonData.missionId);
