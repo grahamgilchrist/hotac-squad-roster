@@ -9,7 +9,7 @@ __p += '\n        <li class="mission-list-item">\n            <div class="missio
 ((__t = ( missionIndex )) == null ? '' : __t) +
 '">\n                <h3>' +
 ((__t = ( missionFlown.mission.name )) == null ? '' : __t) +
-'</h3>\n                <p>on: ' +
+'</h3>\n                <p class="date">on: ' +
 ((__t = ( missionFlown.formattedDate )) == null ? '' : __t) +
 '</p>\n                <span class="down-icon">▼</span>\n                <span class="up-icon">▲</span>\n            </div>\n            <div class="mission-content" toggle-target="mission-' +
 ((__t = ( missionIndex )) == null ? '' : __t) +

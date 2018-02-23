@@ -7,7 +7,7 @@ var DateTime = DateTimeLib.DateTime
 var Mission = function (jsonData) {
     this.mission = missionData.getById(jsonData.missionId);
     this.date = DateTime.fromISO(jsonData.date);
-    this.formattedDate = this.date.toLocaleString(DateTime.DATE_FULL);
+    this.formattedDate = this.date.toLocaleString(DateTime.DATETIME_MED);
     this.success = jsonData.success;
 
     this.vps = {
