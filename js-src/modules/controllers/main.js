@@ -13,6 +13,7 @@ module.exports = {
         $(document).on('click', '[click-toggle]', function () {
             var toggleTargetId = $(this).attr('click-toggle');
             var $toggleTarget = $('[toggle-target=' + toggleTargetId + ']');
+            $(this).toggleClass('active');
             $toggleTarget.toggleClass('active');
         });
     },

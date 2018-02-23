@@ -1,7 +1,9 @@
 .structure
     max-width: 1200px
     margin: 0 auto
-    padding: 0 $site-padding
+
+    @include media($media-main-padding)
+        padding: 0 $site-padding
 
     @include media('print')
         padding: 0
@@ -11,7 +13,9 @@
     background-color: $color-primary
     color: #fff
     padding: $site-padding
-    margin-bottom: $site-padding
+
+    @include media($media-main-padding)
+        margin-bottom: $site-padding
 
     h1
         font-size: 30px
@@ -25,67 +29,3 @@
         font-size: 20px
         margin: 0
         line-height: 1
-
-.new-roster
-    cursor: pointer
-
-.new-content,
-.main-content,
-.not-found
-    &.inactive
-        display: none
-
-.main-content
-    background-color: $color-background-grey
-    padding: 0 $site-padding $site-padding
-
-.pilot-list-item
-    background-color: #fff
-    padding: $site-padding
-    display: flex
-
-    + .pilot-list-item
-        margin-top: $site-padding
-
-.pilot-image
-    width: 300px
-    margin-right: $site-padding
-
-    .image-wrapper
-        overflow: hidden
-        // padding bottom trick to maintain aspect ratio as image scales
-        height: 0
-        padding-bottom: 41%
-        border-radius: 12px
-
-        img
-            display: block
-            max-width: 100%
-
-.pilot-data
-    line-height: 1
-    flex-grow: 1
-
-    .title
-        display: flex
-        justify-content: space-between
-
-    .skill
-        white-space: nowrap
-        margin-left: $site-padding / 2
-
-.mission-list-item
-    background-color: #fff
-    padding: $site-padding
-
-    + .mission-list-item
-        margin-top: $site-padding
-
-[click-toggle]
-    cursor: pointer
-
-[toggle-target]
-    display: none
-
-    &.active
-        display: block

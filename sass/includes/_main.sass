@@ -1,0 +1,142 @@
+.new-roster
+    cursor: pointer
+
+.new-content,
+.main-content,
+.not-found
+    &.inactive
+        display: none
+
+.main-content
+    @include media($media-main-padding)
+        background-color: $color-background-grey
+        padding: 0 $site-padding $site-padding
+
+.campaign
+    text-align: center
+    padding: $site-padding
+        bottom: 0
+
+    .vps
+        display: flex
+        justify-content: space-evenly
+
+        h4
+            margin: 0
+
+.mdl-tabs__panel
+    padding: $site-padding 0
+
+    @include media($media-main-padding)
+        padding: $site-padding
+
+.pilot-list-item
+    background-color: #fff
+
+    &:nth-child(odd)
+        background-color: $color-background-grey
+
+.pilot-header
+    display: flex
+    line-height: 1
+    justify-content: space-between
+    align-items: center
+
+    padding: $site-padding
+
+    @include media($media-main-padding)
+        padding: $site-padding 0
+
+    .callsign,
+    .player-name,
+    .skill,
+    .down-icon,
+    .up-icon
+        margin: 0
+
+    .skill,
+    .player-name
+        margin: 0 ($site-padding / 2)
+
+    .skill
+        white-space: nowrap
+        flex-grow: 1
+        text-align: right
+
+.pilot-content
+    padding: $site-padding
+        top: 0
+
+    @include media($media-main-padding)
+        padding: $site-padding 0
+
+.pilot-image
+    display: none
+
+    @include media($media-ship-image)
+        display: block
+        width: 300px
+        margin-right: $site-padding
+
+    .image-wrapper
+        overflow: hidden
+        // padding bottom trick to maintain aspect ratio as image scales
+        height: 0
+        padding-bottom: 41%
+        border-radius: 12px
+
+        img
+            display: block
+            max-width: 100%
+
+.mission-list-item
+    background-color: #fff
+
+    &:nth-child(odd)
+        background-color: $color-background-grey
+
+    + .mission-list-item
+        margin-top: $site-padding
+
+.mission-header
+    display: flex
+    justify-content: space-between
+    padding: $site-padding
+
+    @include media($media-main-padding)
+        padding: $site-padding 0
+
+    *
+        margin: 0
+
+.mission-content
+    padding: $site-padding
+        top: 0
+
+[click-toggle]
+    cursor: pointer
+
+    .up-icon
+        display: none
+
+    .down-icon
+        display: block
+
+    span.down-icon
+        display: inline-block
+
+    &.active
+        .up-icon
+            display: block
+
+        span.up-icon
+            display: inline-block
+
+        .down-icon
+            display: none
+
+[toggle-target]
+    display: none
+
+    &.active
+        display: block

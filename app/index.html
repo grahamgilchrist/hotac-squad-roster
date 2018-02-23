@@ -72,10 +72,15 @@
                             <a href="#missions-tab" class="mdl-tabs__tab">Missions</a>
                         </div>
 
-                        <h2>Campaign VPs: Rebel: <span id="rebel-vps">0</span>, Imperial: <span id="imperial-vps">0</span></h2>
+                        <div class="campaign">
+                            <h3>Campaign Progress</h3>
+                            <div class="vps">
+                                <h4>Rebel: <span id="rebel-vps">0</span>VPs</h4>
+                                <h4>Imperial: <span id="imperial-vps">0</span>VPs</h4>
+                            </div>
+                        </div>
 
                         <div class="mdl-tabs__panel is-active" id="pilots-tab">
-                            <h3>Pilots</h3>
                             <div view-bind="pilot-list"></div>
 
                             <h4>Add new pilot</h4>
@@ -85,7 +90,6 @@
                         </div>
 
                         <div class="mdl-tabs__panel" id="missions-tab">
-                            <h3>Missions</h3>
                             <div view-bind="mission-list"></div>
                         </div>
 

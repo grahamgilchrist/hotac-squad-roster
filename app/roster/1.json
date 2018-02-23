@@ -3,17 +3,17 @@
   "missions": [
     {
       "missionId": 16,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 15,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 7,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "vps": {
         "rebel": 1
       },
@@ -21,17 +21,17 @@
     },
     {
       "missionId": 6,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 5,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 14,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "vps": {
         "rebel": 1
       },
@@ -39,17 +39,17 @@
     },
     {
       "missionId": 13,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 12,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     },
     {
       "missionId": 1,
-      "date": 1517151600000,
+      "date": "2018-01-28T15:00:00",
       "success": true
     }
   ],

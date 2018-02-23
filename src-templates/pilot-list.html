@@ -1,21 +1,29 @@
 <div class="pilot-list">
     <ul>
         <% pilotObjects.forEach(function(pilotObject, pilotIndex) { %>
-            <li class="pilot-list-item">
-                <div class="pilot-image">
-                    <div class="image-wrapper">
-                        <img src="https://hotac-ship-builder.netlify.com/<%= pilotObject.pilot.imgUrl %>" />
-                    </div>
+            <li class="pilot-list-item" >
+                <div class="pilot-header" click-toggle="content-<%= pilotIndex %>">
+                    <h3 class="callsign"><%= pilotObject.pilot.build.callsign %></h3>
+                    <h4 class="player-name">(<%= pilotObject.pilot.build.playerName %>)</h4>
+                    <p class="skill">Level: <%= pilotObject.pilot.build.pilotSkill %></p>
+                    <p class="down-icon">▼</p>
+                    <p class="up-icon">▲</p>
                 </div>
-                <div class="pilot-data">
-                    <div class="title">
-                        <h3 class="callsign"><%= pilotObject.pilot.build.callsign %></h3>
-                        <p class="skill">Level: <%= pilotObject.pilot.build.pilotSkill %></p>
+
+                <div class="pilot-content" toggle-target="content-<%= pilotIndex %>">
+                    <div class="pilot-image">
+                        <div class="image-wrapper">
+                            <img src="https://hotac-ship-builder.netlify.com/<%= pilotObject.pilot.imgUrl %>" />
+                        </div>
                     </div>
-                    <h4><%= pilotObject.pilot.build.playerName %></h4>
+
                     <p><a href="https://hotac-ship-builder.netlify.com/#/<%= pilotObject.pilot.link %>" target="_blank">Link to build</a></p>
 
-                    <h5 click-toggle="enemies-<%= pilotIndex %>">Enemies Destroyed: <%= pilotObject.enemiesDestroyed %></h5>
+                    <h5 click-toggle="enemies-<%= pilotIndex %>">
+                        <span>Enemies Destroyed: <%= pilotObject.enemiesDestroyed %></span>
+                        <span class="down-icon">▼</span>
+                        <span class="up-icon">▲</span>
+                    </h5>
                     <ul toggle-target="enemies-<%= pilotIndex %>">
                         <% for (var xwsKey in pilotObject.pilot.build.enemyDefeats.enemyDefeats) { %>
                             <li><%= xwsKey %>: <%= pilotObject.pilot.build.enemyDefeats.enemyDefeats[xwsKey] %></li>
@@ -25,8 +33,12 @@
                     <h5>Total XP earned: <%= pilotObject.xpTotal %></h5>
 
 
-                    <h5 click-toggle="squadron-missions-<%= pilotIndex %>">Squadron Missions: (<%= pilotObject.missionCounts.total %>)</h5>
-                    <div toggle-target="squadron-missions-<%= pilotIndex %>">
+                    <h5 click-toggle="pilot-squadron-missions-<%= pilotIndex %>">
+                        <span>Squadron Missions: (<%= pilotObject.missionCounts.total %>)</span>
+                        <span class="down-icon">▼</span>
+                        <span class="up-icon">▲</span>
+                    </h5>
+                    <div toggle-target="pilot-squadron-missions-<%= pilotIndex %>">
                         <h6>Success: <%= pilotObject.missionCounts.success %></h6>
                         <h6>Fail: <%= pilotObject.missionCounts.fail %></h6>
                         <ul>
@@ -36,13 +48,17 @@
                         </ul>
                     </div>
 
-                    <h5 click-toggle="pilot-missions-<%= pilotIndex %>">Pilot Missions: (<%= pilotObject.missionCounts.pilotMissions %>)</h5>
+                    <h5 click-toggle="pilot-missions-<%= pilotIndex %>">
+                        <span>Pilot Missions: (<%= pilotObject.missionCounts.pilotMissions %>)</span>
+                        <span class="down-icon">▼</span>
+                        <span class="up-icon">▲</span>
+                    </h5>
                     <ul toggle-target="pilot-missions-<%= pilotIndex %>">
                         <% pilotObject.pilotMissions.forEach(function(mission) { %>
                             <li><%= mission.name %></li>
                         <% }); %>
                     </ul>
-                </h4>
+                </div>
             </li>
         <% }); %>
     </ul>

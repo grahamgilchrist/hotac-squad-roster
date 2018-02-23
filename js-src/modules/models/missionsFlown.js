@@ -1,11 +1,13 @@
 'use strict';
 
 var missionData = require('./missions');
+var DateTimeLib = require('luxon');
+var DateTime = DateTimeLib.DateTime
 
 var Mission = function (jsonData) {
     this.mission = missionData.getById(jsonData.missionId);
-    this.date = new Date();
-    this.date.setTime(jsonData.date);
+    this.date = DateTime.fromISO(jsonData.date);
+    this.formattedDate = this.date.toLocaleString(DateTime.DATE_FULL);
     this.success = jsonData.success;
 
     this.vps = {

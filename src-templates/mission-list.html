@@ -1,14 +1,23 @@
 <ul>
-    <% missionsFlown.forEach(function(missionFlown) { %>
+    <% missionsFlown.forEach(function(missionFlown, missionIndex) { %>
         <li class="mission-list-item">
-            <h3><%= missionFlown.mission.name %></h3>
-            <p>on: <%= missionFlown.date.toUTCString() %></p>
-            <p>
-                <strong>Pilots:</strong>
-                <% missionFlown.pilots.forEach(function(pilot) { %>
-                    <%= pilot.build.callsign %>, 
-                <% }); %>
-            </p>
+            <div class="mission-header" click-toggle="mission-<%= missionIndex %>">
+                <h3><%= missionFlown.mission.name %></h3>
+                <p>on: <%= missionFlown.formattedDate %></p>
+                <span class="down-icon">▼</span>
+                <span class="up-icon">▲</span>
+            </div>
+            <div class="mission-content" toggle-target="mission-<%= missionIndex %>">
+                <p>Outcome: <%= missionFlown.success %></p>
+                <p>Rebel VPs: <%= missionFlown.vps.rebel %></p>
+                <p>Imperial VPs: <%= missionFlown.vps.imperial %></p>
+                <p>
+                    <strong>Pilots:</strong>
+                    <% missionFlown.pilots.forEach(function(pilot) { %>
+                        <%= pilot.build.callsign %>, 
+                    <% }); %>
+                </p>
+            </div>
         </li>
     <% }); %>
 </ul>
