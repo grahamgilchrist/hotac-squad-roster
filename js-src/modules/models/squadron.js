@@ -135,6 +135,7 @@ Squadron.prototype.parsePilotJson = function (pilotJson) {
         var build = new Build(decodedPilot.xpHistory, decodedPilot.callsign, decodedPilot.playerName, decodedPilot.enemies, decodedPilot.equippedUpgrades, decodedPilot.equippedAbilities);
         pilotObject.build = build;
         pilotObject.imgUrl = '/components/xwing-data/images/' + build.currentShip.pilotCard.image;
+        pilotObject.missions = [];
         return pilotObject;
     });
 

@@ -50,7 +50,7 @@ __p += '\n            <li class="pilot-list-item" >\n                <div class=
 ((__t = ( pilotIndex )) == null ? '' : __t) +
 '">\n                    <div class="pilot-image">\n                        <div class="image-wrapper">\n                            <img src="https://hotac-ship-builder.netlify.com/' +
 ((__t = ( pilotObject.pilot.imgUrl )) == null ? '' : __t) +
-'" />\n                        </div>\n                    </div>\n\n                    <p><a href="https://hotac-ship-builder.netlify.com/#/' +
+'" />\n                        </div>\n                    </div>\n\n                    <p><a href="https://hotac-ship-builder.netlify.com/#' +
 ((__t = ( pilotObject.pilot.link )) == null ? '' : __t) +
 '" target="_blank">Link to build</a></p>\n\n                    <h5 click-toggle="enemies-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +
