@@ -31,7 +31,7 @@ var ShipBuild = function (xpHistory, callsign, playerName, enemyDefeats, equippe
     var upgradeIds = this.getUpgradeIdsFromHistory();
     var pilotIds = this.getPilotIdsFromHistory();
 
-    this.UpgradesSlotsModelts = new UpgradesSlotsModel(this);
+    this.upgradeSlots = new UpgradesSlotsModel(this);
     this.upgrades = new UpgradesModel(this, upgradeIds, equippedUpgrades, pilotIds, equippedAbilities);
 
     this.ready = true;
