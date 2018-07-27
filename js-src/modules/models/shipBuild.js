@@ -9,7 +9,7 @@ var ships = require('./ships');
 var events = require('../controllers/events');
 var XpItem = require('./shipBuild/xpItem');
 var itemTypes = require('./shipBuild/itemTypes');
-var arrayUtils = require('../utils/array-utils');
+var arrayUtils = require('xwing-hotac-lib/modules/utils/array-utils');
 
 var EnemyDefeatsModel = require('../models/enemyDefeats');
 var UpgradesModel = require('./shipBuild/upgradesModel');
@@ -31,7 +31,7 @@ var ShipBuild = function (xpHistory, callsign, playerName, enemyDefeats, equippe
     var upgradeIds = this.getUpgradeIdsFromHistory();
     var pilotIds = this.getPilotIdsFromHistory();
 
-    this.upgradeSlots = new UpgradesSlotsModel(this);
+    this.UpgradesSlotsModelts = new UpgradesSlotsModel(this);
     this.upgrades = new UpgradesModel(this, upgradeIds, equippedUpgrades, pilotIds, equippedAbilities);
 
     this.ready = true;

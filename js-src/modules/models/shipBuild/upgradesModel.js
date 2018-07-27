@@ -17,7 +17,7 @@ var pilots = require('../pilots');
 var uniquePilots = pilots.unique;
 
 var events = require('../../controllers/events');
-var arrayUtils = require('../../utils/array-utils');
+var arrayUtils = require('xwing-hotac-lib/modules/utils/array-utils');
 
 var upgradesModel = function (build, upgradeIdList, equippedIdList, pilotIds, equippedAbilityIds) {
     this.build = build;
