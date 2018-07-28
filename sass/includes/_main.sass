@@ -49,6 +49,7 @@
 
     .callsign,
     .player-name,
+    .squad-number,
     .skill,
     .down-icon,
     .up-icon
@@ -63,6 +64,11 @@
         flex-grow: 1
         text-align: right
 
+    .callsign,
+    .player-name
+        display: inline-block
+        vertical-align: middle
+
 .pilot-content
     padding: $site-padding
     padding-top: 0
@@ -71,7 +77,6 @@
         padding: $site-padding 0
 
 .pilot-image
-    display: none
 
     @include media($media-ship-image)
         display: block
@@ -87,6 +92,7 @@
 
         img
             display: block
+            width: 100%
             max-width: 100%
 
 .mission-list-item

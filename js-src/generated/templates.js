@@ -40,11 +40,15 @@ __p += '<div class="pilot-list">\n    <ul>\n        ';
  pilotObjects.forEach(function(pilotObject, pilotIndex) { ;
 __p += '\n            <li class="pilot-list-item" >\n                <div class="pilot-header" click-toggle="content-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +
-'">\n                    <h3 class="callsign">' +
+'">\n                    <div class="pilot-title-wrapper">\n                        <h3 class="callsign">' +
 ((__t = ( pilotObject.pilot.build.callsign )) == null ? '' : __t) +
-'</h3>\n                    <h4 class="player-name">(' +
+'</h3>\n                        <h4 class="player-name">(' +
 ((__t = ( pilotObject.pilot.build.playerName )) == null ? '' : __t) +
-')</h4>\n                    <p class="skill">Level: ' +
+')</h4>\n                        <h5 class="squad-number">' +
+((__t = ( squadron.name )) == null ? '' : __t) +
+' ' +
+((__t = ( pilotIndex + 1 )) == null ? '' : __t) +
+'</h5>\n                    </div>\n                    <p class="skill">Level: ' +
 ((__t = ( pilotObject.pilot.build.pilotSkill )) == null ? '' : __t) +
 '</p>\n                    <p class="down-icon">▼</p>\n                    <p class="up-icon">▲</p>\n                </div>\n\n                <div class="pilot-content" toggle-target="content-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +

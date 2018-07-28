@@ -6,7 +6,8 @@ var itemTypes = require('../models/shipBuild/itemTypes');
 var $ = require('jquery');
 
 module.exports = {
-    render: function (pilotsList) {
+    render: function (squadron) {
+        var pilotsList = squadron.pilots;
         var $wrapperElement = $('[view-bind=pilot-list]');
 
         var pilotObjects = [];
@@ -61,6 +62,7 @@ module.exports = {
         });
 
         var context = {
+            squadron: squadron,
             pilotObjects: pilotObjects
         };
         templateUtils.renderToDom('pilot-list', $wrapperElement, context);

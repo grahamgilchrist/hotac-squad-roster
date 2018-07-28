@@ -71,14 +71,14 @@ module.exports = {
     },
     bindModelEvents: function () {
         events.on('model.squadron.ready', function (event, squadron) {
-            pilotListView.render(squadron.pilots);
+            pilotListView.render(squadron);
             missionListController.ready(squadron);
             squadronNameView.render(squadron);
             mainView.renderVps(squadron);
         });
 
         events.on('model.squadron.pilots.add', function (event, squadron) {
-            pilotListView.render(squadron.pilots);
+            pilotListView.render(squadron);
         });
 
     }
