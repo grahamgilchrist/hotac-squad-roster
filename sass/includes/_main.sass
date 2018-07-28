@@ -30,6 +30,10 @@
     @include media($media-main-padding)
         padding: $site-padding
 
+.pilot-list
+    h3
+        margin: 1em $site-padding
+
 .pilot-list-item
     background-color: #fff
 
@@ -50,6 +54,7 @@
     .callsign,
     .player-name,
     .squad-number,
+    .squad-leader,
     .skill,
     .down-icon,
     .up-icon
@@ -61,6 +66,9 @@
     .player-name
         @include media($media-main-padding)
             margin-left: 0.5em
+
+    .squad-leader
+        color: $color-accent
 
     .skill
         white-space: nowrap

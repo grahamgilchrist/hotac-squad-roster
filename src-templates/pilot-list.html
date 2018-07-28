@@ -1,5 +1,7 @@
 <div class="pilot-list">
-    <h3>Squad Leader: XXX</h3>
+    <% if (squadron.squadLeader) { %>
+        <h3>Squad Leader: <%= squadron.squadLeader.build.callsign %></h3>
+    <% } %>
     <ul>
         <% pilotObjects.forEach(function(pilotObject, pilotIndex) { %>
             <li class="pilot-list-item" >
@@ -7,6 +9,9 @@
                     <div class="pilot-title-wrapper">
                         <h3 class="callsign"><%= pilotObject.pilot.build.callsign %></h3>
                         <h4 class="player-name">(<%= pilotObject.pilot.build.playerName %>)</h4>
+                        <% if (pilotObject.pilot.squadLeader) { %>
+                            <h4 class="squad-leader">Squad leader</h4>
+                        <% } %>
                         <h5 class="squad-number"><%= squadron.name %> <%= pilotIndex + 1 %></h5>
                     </div>
                     <p class="skill">Level: <%= pilotObject.pilot.build.pilotSkill %></p>

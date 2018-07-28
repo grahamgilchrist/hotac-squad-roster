@@ -44,7 +44,13 @@ obj || (obj = {});
 var __t, __p = '', __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="pilot-list">\n    <h3>Squad Leader: XXX</h3>\n    <ul>\n        ';
+__p += '<div class="pilot-list">\n    ';
+ if (squadron.squadLeader) { ;
+__p += '\n        <h3>Squad Leader: ' +
+((__t = ( squadron.squadLeader.build.callsign )) == null ? '' : __t) +
+'</h3>\n    ';
+ } ;
+__p += '\n    <ul>\n        ';
  pilotObjects.forEach(function(pilotObject, pilotIndex) { ;
 __p += '\n            <li class="pilot-list-item" >\n                <div class="pilot-header" click-toggle="content-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +
@@ -52,7 +58,11 @@ __p += '\n            <li class="pilot-list-item" >\n                <div class=
 ((__t = ( pilotObject.pilot.build.callsign )) == null ? '' : __t) +
 '</h3>\n                        <h4 class="player-name">(' +
 ((__t = ( pilotObject.pilot.build.playerName )) == null ? '' : __t) +
-')</h4>\n                        <h5 class="squad-number">' +
+')</h4>\n                        ';
+ if (pilotObject.pilot.squadLeader) { ;
+__p += '\n                            <h4 class="squad-leader">Squad leader</h4>\n                        ';
+ } ;
+__p += '\n                        <h5 class="squad-number">' +
 ((__t = ( squadron.name )) == null ? '' : __t) +
 ' ' +
 ((__t = ( pilotIndex + 1 )) == null ? '' : __t) +

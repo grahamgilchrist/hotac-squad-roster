@@ -41,6 +41,18 @@ Squadron.prototype.parseJson = function (json) {
         self.assignMissionPilots(json.missionPilots);
         self.assignPilotMissions(json.missionPilots);
 
+        var highestPilotSkill = 0;
+        var highestPilotSkillPilot;
+        self.pilots.forEach(function (item) {
+            if (item.build.pilotSkill > highestPilotSkill) {
+                highestPilotSkill = item.build.pilotSkill;
+                highestPilotSkillPilot = item;
+            };
+        });
+        if (highestPilotSkillPilot) {
+            highestPilotSkillPilot.squadLeader = true;
+        }
+
         return self;
     });
 
