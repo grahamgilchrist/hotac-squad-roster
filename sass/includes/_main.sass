@@ -56,8 +56,11 @@
         margin: 0
 
     .skill,
-    .player-name
         margin: 0 ($site-padding / 2)
+
+    .player-name
+        @include media($media-main-padding)
+            margin-left: 0.5em
 
     .skill
         white-space: nowrap
@@ -66,8 +69,9 @@
 
     .callsign,
     .player-name
-        display: inline-block
-        vertical-align: middle
+        @include media($media-main-padding)
+            display: inline-block
+            vertical-align: middle
 
 .pilot-content
     padding: $site-padding
