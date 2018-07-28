@@ -31,7 +31,7 @@ module.exports = {
     },
     renderVps: function (squadron) {
         var vps = squadron.getVpTotals();
-        $('#rebel-vps').text(vps.rebel);
-        $('#imperial-vps').text(vps.imperial);
+        $('[value-bind="rebel-vps"]').text(vps.rebel);
+        $('[value-bind="imperial-vps"]').text(vps.imperial);
     }
 };

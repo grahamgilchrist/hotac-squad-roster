@@ -70,17 +70,18 @@
                         <div class="mdl-tabs__tab-bar">
                             <a href="#pilots-tab" class="mdl-tabs__tab is-active"><span>Pilots</span></a>
                             <a href="#missions-tab" class="mdl-tabs__tab">Missions</a>
-                        </div>
-
-                        <div class="campaign">
-                            <h3>Campaign Progress</h3>
-                            <div class="vps">
-                                <h4>Rebel: <span id="rebel-vps">0</span>VPs</h4>
-                                <h4>Imperial: <span id="imperial-vps">0</span>VPs</h4>
-                            </div>
+                            <a href="#stats-tab" class="mdl-tabs__tab">Stats</a>
                         </div>
 
                         <div class="mdl-tabs__panel is-active" id="pilots-tab">
+                            <div class="campaign">
+                                <h3>Campaign Progress</h3>
+                                <div class="vps">
+                                    <h4>Rebel: <span value-bind="rebel-vps">0</span>VPs</h4>
+                                    <h4>Imperial: <span value-bind="imperial-vps">0</span>VPs</h4>
+                                </div>
+                            </div>
+
                             <div view-bind="pilot-list"></div>
 
                             <h4>Add new pilot</h4>
@@ -90,11 +91,25 @@
                         </div>
 
                         <div class="mdl-tabs__panel" id="missions-tab">
+                            <div class="campaign">
+                                <h3>Campaign Progress</h3>
+                                <div class="vps">
+                                    <h4>Rebel: <span value-bind="rebel-vps">0</span>VPs</h4>
+                                    <h4>Imperial: <span value-bind="imperial-vps">0</span>VPs</h4>
+                                </div>
+                            </div>
+
                             <div view-bind="mission-list"></div>
+                        </div>
+
+                        <div class="mdl-tabs__panel" id="stats-tab">
+                            <div view-bind="stats"></div>
                         </div>
 
                     </div>
                 </div>
+
+
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var missionListController = require('./missionList');
+var statsController = require('./stats');
 var SquadronModel = require('../models/squadron');
 var urlHashController = require('../controllers/urlHash');
 var httpController = require('../controllers/http');
@@ -73,6 +74,7 @@ module.exports = {
         events.on('model.squadron.ready', function (event, squadron) {
             pilotListView.render(squadron);
             missionListController.ready(squadron);
+            statsController.ready(squadron);
             squadronNameView.render(squadron);
             mainView.renderVps(squadron);
         });

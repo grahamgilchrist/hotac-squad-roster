@@ -7,15 +7,23 @@ __p += '<ul>\n    ';
  missionsFlown.forEach(function(missionFlown, missionIndex) { ;
 __p += '\n        <li class="mission-list-item">\n            <div class="mission-header" click-toggle="mission-' +
 ((__t = ( missionIndex )) == null ? '' : __t) +
-'">\n                <h3>' +
+'">\n                <div class="mission-header-inner">\n                    <div class="mission-title-wrapper">\n                        <h3>' +
 ((__t = ( missionFlown.mission.name )) == null ? '' : __t) +
-'</h3>\n                <p class="date">on: ' +
+'</h3>\n                        <h5>' +
+((__t = ( missionFlown.mission.groupName )) == null ? '' : __t) +
+': Part ' +
+((__t = ( missionFlown.mission.groupPart )) == null ? '' : __t) +
+'</h5>\n                    </div>\n                    <p class="date">on: ' +
 ((__t = ( missionFlown.formattedDate )) == null ? '' : __t) +
-'</p>\n                <span class="down-icon">▼</span>\n                <span class="up-icon">▲</span>\n            </div>\n            <div class="mission-content" toggle-target="mission-' +
+'</p>\n                </div>\n                <span class="open-indicator">\n                    <span class="down-icon">▼</span>\n                    <span class="up-icon">▲</span>\n                </span>\n            </div>\n            <div class="mission-content" toggle-target="mission-' +
 ((__t = ( missionIndex )) == null ? '' : __t) +
-'">\n                <p>Outcome: ' +
-((__t = ( missionFlown.success )) == null ? '' : __t) +
-'</p>\n                <p>Rebel VPs: ' +
+'">\n                <p>Outcome: \n                    ';
+ if (missionFlown.success === true) { ;
+__p += '\n                        Success\n                    ';
+ } else { ;
+__p += '\n                        Fail\n                    ';
+ } ;
+__p += '\n                </p>\n                <p>Rebel VPs: ' +
 ((__t = ( missionFlown.vps.rebel )) == null ? '' : __t) +
 '</p>\n                <p>Imperial VPs: ' +
 ((__t = ( missionFlown.vps.imperial )) == null ? '' : __t) +
@@ -36,7 +44,7 @@ obj || (obj = {});
 var __t, __p = '', __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="pilot-list">\n    <ul>\n        ';
+__p += '<div class="pilot-list">\n    <h3>Squad Leader: XXX</h3>\n    <ul>\n        ';
  pilotObjects.forEach(function(pilotObject, pilotIndex) { ;
 __p += '\n            <li class="pilot-list-item" >\n                <div class="pilot-header" click-toggle="content-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +
@@ -72,7 +80,9 @@ __p += '\n                            <li>' +
  } ;
 __p += '\n                    </ul>\n\n                    <h5>Total XP earned: ' +
 ((__t = ( pilotObject.xpTotal )) == null ? '' : __t) +
-'</h5>\n\n\n                    <h5 click-toggle="pilot-squadron-missions-' +
+'</h5>\n                    <h5>Unspent XP: ' +
+((__t = ( pilotObject.pilot.build.currentXp )) == null ? '' : __t) +
+'</h5>\n\n                    <h5 click-toggle="pilot-squadron-missions-' +
 ((__t = ( pilotIndex )) == null ? '' : __t) +
 '">\n                        <span>Squadron Missions: (' +
 ((__t = ( pilotObject.missionCounts.total )) == null ? '' : __t) +
@@ -103,6 +113,14 @@ __p += '\n                            <li>' +
 __p += '\n                    </ul>\n                </div>\n            </li>\n        ';
  }); ;
 __p += '\n    </ul>\n</div>\n';
+
+}
+return __p
+},"stats": function(obj) {
+obj || (obj = {});
+var __t, __p = '';
+with (obj) {
+__p += '<div>\n    <h3>Most XP overall</h3>\n\n    <h3>Most Missions played</h3>\n\n    <h3>Most enemies killed:</h3>\n    <ul>\n        <li>Total: </li>\n        <li>TIE: </li>\n        <li>TIE Bomber: </li>\n        <li>Tie Interceptor: </li>\n        <li>TIE: </li>\n        <li>TIE: </li>\n    </ul>\n</div>\n';
 
 }
 return __p

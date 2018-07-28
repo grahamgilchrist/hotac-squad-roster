@@ -1,4 +1,5 @@
 <div class="pilot-list">
+    <h3>Squad Leader: XXX</h3>
     <ul>
         <% pilotObjects.forEach(function(pilotObject, pilotIndex) { %>
             <li class="pilot-list-item" >
@@ -34,7 +35,7 @@
                     </ul>
 
                     <h5>Total XP earned: <%= pilotObject.xpTotal %></h5>
-
+                    <h5>Unspent XP: <%= pilotObject.pilot.build.currentXp %></h5>
 
                     <h5 click-toggle="pilot-squadron-missions-<%= pilotIndex %>">
                         <span>Squadron Missions: (<%= pilotObject.missionCounts.total %>)</span>

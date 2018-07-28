@@ -2,13 +2,26 @@
     <% missionsFlown.forEach(function(missionFlown, missionIndex) { %>
         <li class="mission-list-item">
             <div class="mission-header" click-toggle="mission-<%= missionIndex %>">
-                <h3><%= missionFlown.mission.name %></h3>
-                <p class="date">on: <%= missionFlown.formattedDate %></p>
-                <span class="down-icon">▼</span>
-                <span class="up-icon">▲</span>
+                <div class="mission-header-inner">
+                    <div class="mission-title-wrapper">
+                        <h3><%= missionFlown.mission.name %></h3>
+                        <h5><%= missionFlown.mission.groupName %>: Part <%= missionFlown.mission.groupPart %></h5>
+                    </div>
+                    <p class="date">on: <%= missionFlown.formattedDate %></p>
+                </div>
+                <span class="open-indicator">
+                    <span class="down-icon">▼</span>
+                    <span class="up-icon">▲</span>
+                </span>
             </div>
             <div class="mission-content" toggle-target="mission-<%= missionIndex %>">
-                <p>Outcome: <%= missionFlown.success %></p>
+                <p>Outcome: 
+                    <% if (missionFlown.success === true) { %>
+                        Success
+                    <% } else { %>
+                        Fail
+                    <% } %>
+                </p>
                 <p>Rebel VPs: <%= missionFlown.vps.rebel %></p>
                 <p>Imperial VPs: <%= missionFlown.vps.imperial %></p>
                 <p>

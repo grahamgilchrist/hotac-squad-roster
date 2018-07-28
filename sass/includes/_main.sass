@@ -102,9 +102,10 @@
         background-color: $color-background-grey
 
 .mission-header
+    padding: $site-padding
     display: flex
     justify-content: space-between
-    padding: $site-padding
+    align-items: center
 
     @include media($media-main-padding)
         padding: $site-padding 0
@@ -112,10 +113,19 @@
     *
         margin: 0
 
-    .date
+    .mission-header-inner
         flex-grow: 1
-        text-align: right
-        margin-right: $site-padding / 2
+
+        @include media($media-main-padding)
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+    .date
+        @include media($media-main-padding)
+            flex-grow: 1
+            text-align: right
+            margin-right: $site-padding / 2
 
 .mission-content
     padding: $site-padding
