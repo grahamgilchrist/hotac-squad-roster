@@ -29,7 +29,7 @@
     "json-url": "2.3.x",
     "lodash": "4.17.x",
     "luxon": "^0.5.3",
-    "node-sass": "4.6.x",
+    "node-sass": "4.13.x",
     "pump": "^1.0.3",
     "run-sequence": "^2.2.0",
     "vinyl-source-stream": "1.x",
